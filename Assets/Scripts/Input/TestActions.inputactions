@@ -1,0 +1,54 @@
+{
+    "name": "TestActions",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "13683bfc-8832-462c-b05d-18b535fdc738",
+            "actions": [
+                {
+                    "name": "Save",
+                    "type": "Button",
+                    "id": "1a2628a4-9519-40f0-b0d0-d13b81db2d77",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Load",
+                    "type": "Button",
+                    "id": "538186ad-f550-4ad6-8346-3aa50f725fee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "660f664a-4f71-4b29-a92f-df28f5b837ae",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Save",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d51176d5-836a-4e44-b165-9d2a6a2c97dd",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Load",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
