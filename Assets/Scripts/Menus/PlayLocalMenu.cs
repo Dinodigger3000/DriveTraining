@@ -25,7 +25,7 @@ public class PlayLocalMenu : MonoBehaviour
     public int playerInputListener = 0;
     public string subMenu;
     private GameDataManager gameDataManager;
-    private readonly InputAction _anyKeyWait = new(binding: "/*/<button>", type:InputActionType.Button);
+    private readonly InputAction _anyKeyWait = new InputAction (binding: "/*/<button>", type:InputActionType.Button);
     private void Awake() => _anyKeyWait.performed += DoSomething;
     private void OnDestroy() => _anyKeyWait.performed -= DoSomething;
     private void OnDisable() => _anyKeyWait.Disable();
