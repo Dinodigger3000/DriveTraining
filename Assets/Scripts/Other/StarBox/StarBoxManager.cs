@@ -39,12 +39,12 @@ public class StarBoxManager : MonoBehaviour
        currentStarBox = Instantiate(starBoxPrefab, random, new Quaternion(0,0,0,0));
     }
 
-    private Vector3 randomVector()
+    public Vector3 randomVector()
     {
         float x = Random.Range(topLeft.position.x, bottomRight.position.x);
         float z = Random.Range(topLeft.position.z, bottomRight.position.z);
    //     print(new Vector2(x, z));
-        return new Vector3(x, .3f, z);
+        return new Vector3(x, 0, z);
     }
 
     public void newStarBox()
@@ -52,7 +52,7 @@ public class StarBoxManager : MonoBehaviour
         Destroy(currentStarBox);
         AudioManager.instance.Play("Collect");
         CameraShake.Instance.Shake();
-        stars++;
+        stars = stars + 1;
 
         if (starsTillEnd <= stars)
         {
