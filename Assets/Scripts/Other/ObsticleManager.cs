@@ -16,7 +16,6 @@ public class ObsticleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        starBoxManager = FindObjectOfType<StarBoxManager>();
          randomItemAmmount = Random.Range(Mathf.RoundToInt(RandomItemRange.x), Mathf.RoundToInt(RandomItemRange.y));
     }
     
@@ -25,12 +24,12 @@ public class ObsticleManager : MonoBehaviour
     {
         if(currentAmmount < randomItemAmmount)
         {
-            var currentPrefab = prefabs[Random.Range(0, prefabs.Length)];
+            GameObject currentPrefab = prefabs[Random.Range(0, prefabs.Length)];
 
-            float randomX = Random.Range(0, 360);
-            Instantiate(currentPrefab, starBoxManager.randomVector(), new Quaternion(0,randomX , 0, 0));
+            Quaternion randomX = new Quaternion(0, Random.Range(0f, 360f), 0, 0); 
+            Instantiate(currentPrefab, RandomPositionManager.instance.randomVector(), new Quaternion(0,0,0,0));
 
-          
+            //currentPrefab.transform.localRotation = randomX;
             currentAmmount++;
         }
       

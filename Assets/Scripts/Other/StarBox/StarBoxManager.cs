@@ -7,8 +7,7 @@ public class StarBoxManager : MonoBehaviour
 {
 
     public GameObject starBoxPrefab;
-    public Transform topLeft;
-    public Transform bottomRight;
+
 
     private GameObject currentStarBox;
 
@@ -35,17 +34,11 @@ public class StarBoxManager : MonoBehaviour
 
     private void startStarBox()
     {
-        Vector3 random = randomVector();
+        Vector3 random = RandomPositionManager.instance.randomVector();
        currentStarBox = Instantiate(starBoxPrefab, random, new Quaternion(0,0,0,0));
     }
 
-    public Vector3 randomVector()
-    {
-        float x = Random.Range(topLeft.position.x, bottomRight.position.x);
-        float z = Random.Range(topLeft.position.z, bottomRight.position.z);
-   //     print(new Vector2(x, z));
-        return new Vector3(x, 0, z);
-    }
+    
 
     public void newStarBox()
     {
