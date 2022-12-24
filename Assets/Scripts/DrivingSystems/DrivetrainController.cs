@@ -71,7 +71,9 @@ public class DrivetrainController : MonoBehaviour {
     }
     
     public String DriveType;
+    public bool isRobotCentric;
     public SwerveModule Swerve;
+    public TankModule Tank;
     public Wheel FL;
     public Wheel FR;
     public Wheel BL;
@@ -91,6 +93,7 @@ public class DrivetrainController : MonoBehaviour {
     public float robotYAngle;
 
     public PlayerDetails playerDetails;
+    
 
     // public Wheel[] test = new Wheel[4]; new way of instantiating arrays
     
@@ -159,10 +162,17 @@ public class DrivetrainController : MonoBehaviour {
         debug_turn = rotationalInput;
         if (DriveType == "Swerve") 
         {
-            ModuleState[] moduleStates = Swerve.UpdateSwerveFromInputs(verticalInput, horizontalInput, rotationalInput, GetRobotAngle() * Mathf.Deg2Rad);
+            ModuleState[] moduleStates = Swerve.UpdateSwerveFromInputs(verticalInput, horizontalInput, rotationalInput, GetRobotAngle() * Mathf.Deg2Rad, isRobotCentric);
             for (int i = 0; i < 4; i++) {
                 Wheels[i].Set(i, moduleStates[i], motorTorque, brakeTorque, maxMotorRPM);
             }
+        }
+        else if (DriveType == "Tank")
+        {
+            // ModuleState[] moduleStates = Tank.UpdateTankFromInputs();
+            // for (int i = 0; i < 4; i++) {
+            //     Wheels[i].Set(i, moduleStates[i], motorTorque, brakeTorque, maxMotorRPM);
+            // }
         }
     }
 }

@@ -5,10 +5,12 @@ using UnityEngine;
 public class SwerveModule
 {
     public Rotation2d[] oldWheelAngle = {new Rotation2d(), new Rotation2d(), new Rotation2d(), new Rotation2d()};
-    public ModuleState[] UpdateSwerveFromInputs(float verticalInput, float horizontalInput, float rotationalInput, float robotAngle/* , bool isRobotCentric */) { //swerveOnly
-        float temp = verticalInput * Mathf.Cos(robotAngle) + horizontalInput*Mathf.Sin(robotAngle);
-        horizontalInput = -verticalInput*Mathf.Sin(robotAngle) + horizontalInput * Mathf.Cos(robotAngle);
-        verticalInput = temp;
+    public ModuleState[] UpdateSwerveFromInputs(float verticalInput, float horizontalInput, float rotationalInput, float robotAngle, bool isRobotCentric) { //swerveOnly
+        if (!isRobotCentric) { // The inputs are field centric, convert them to be robot relative
+            float temp = verticalInput * Mathf.Cos(robotAngle) + horizontalInput*Mathf.Sin(robotAngle);
+            horizontalInput = -verticalInput*Mathf.Sin(robotAngle) + horizontalInput * Mathf.Cos(robotAngle);
+            verticalInput = temp;
+        }
 
         float A = horizontalInput - rotationalInput * 0.707f;
         float B = horizontalInput + rotationalInput * 0.707f;
