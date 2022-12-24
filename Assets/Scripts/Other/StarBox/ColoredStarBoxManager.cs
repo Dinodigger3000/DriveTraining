@@ -21,6 +21,7 @@ public class ColoredStarBoxManager : MonoBehaviour
     public int stars;
     public int starsTillEnd = 6;
     public Text timerText;
+    public Text scoreText;
 
 
 
@@ -36,12 +37,11 @@ public class ColoredStarBoxManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoreText.text = (stars.ToString() + '/' + starsTillEnd.ToString());
         if (timerOn)
         {
             timer += Time.deltaTime;
-            timerText.text = (Mathf.Round(timer * 100f) / 100f).ToString();
-                
-              
+            timerText.text = (Mathf.Round(timer * 100f) / 100f).ToString();     
         }
     }
 
