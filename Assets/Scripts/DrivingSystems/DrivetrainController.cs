@@ -116,9 +116,17 @@ public class DrivetrainController : MonoBehaviour {
         if (DriveType == "Swerve") {
             InitializeSwerve();
         }
-        transform.position = playerDetails.spawn.position;
-        transform.rotation = playerDetails.spawn.rotation;
-        gyroOffset = playerDetails.spawn.eulerAngles.y;
+
+        if (playerDetails.spawn != null)
+        {
+            transform.position = playerDetails.spawn.position;
+            transform.rotation = playerDetails.spawn.rotation;
+            gyroOffset = playerDetails.spawn.eulerAngles.y;
+        }
+        else
+        {
+            Debug.LogWarning("Player Spawn Details unasigned", playerDetails);
+        }
         for (int i =0; i < 4; i++) {   // make the robots weight the same between all wheels.
             Wheels[i].collider.sprungMass = (body.mass / 4);
         }
