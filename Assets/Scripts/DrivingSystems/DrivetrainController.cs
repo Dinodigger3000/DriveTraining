@@ -88,7 +88,8 @@ public class DrivetrainController : MonoBehaviour {
     public float debug_throttleHorizontal;
     public float debug_turn;
 
-    private InputActionMap controls;
+    private InputActionMap SwerveControls;
+    private InputActionMap TankControls;
     private float gyroOffset;
     public float robotYAngle;
 
@@ -106,8 +107,14 @@ public class DrivetrainController : MonoBehaviour {
         Wheels[2] = BL;
         Wheels[3] = BR;
 
-        controls = GetComponent<PlayerInput>().actions.FindActionMap("Swerve");
-
+        SwerveControls = GetComponent<PlayerInput>().actions.FindActionMap("Swerve");
+        TankControls = GetComponent<PlayerInput>().actions.FindActionMap("Tank");
+        if (Swerve == null) {
+            Swerve = new SwerveModule();
+        }
+        if (Tank == null) {
+            Tank = new TankModule();
+        }
         playerDetails = GetComponent<PlayerDetails>();
     }
     void Start() {
@@ -116,9 +123,6 @@ public class DrivetrainController : MonoBehaviour {
         BL.Setup();
         BR.Setup();
         body.centerOfMass = new Vector3(0f, 0f, 0f);
-        if (DriveType == "Swerve") {
-            InitializeSwerve();
-        }
 
         if (playerDetails.spawn != null)
         {
@@ -137,18 +141,14 @@ public class DrivetrainController : MonoBehaviour {
 
     public void OnEnable()
     {
-        controls.Enable();
+        SwerveControls.Enable();
+        TankControls.Enable();
     }
 
     public void OnDisable()
     {
-        controls.Disable();
-    }
-    public SwerveModule InitializeSwerve() {
-        if (Swerve == null) {
-            Swerve = new SwerveModule();
-        }
-        return Swerve;
+        SwerveControls.Disable();
+        TankControls.Disable();
     }
     public float GetRobotAngle() {
         float rot = transform.eulerAngles.y + gyroOffset;
@@ -160,16 +160,16 @@ public class DrivetrainController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        robotYAngle = GetRobotAngle();
-        float verticalInput = controls.FindAction("VerticalAxis").ReadValue<float>();
-        float horizontalInput = controls.FindAction("HorizontalAxis").ReadValue<float>();
-        float rotationalInput = controls.FindAction("RotationalAxis").ReadValue<float>();
-
-        debug_throttleVertical = verticalInput;
-        debug_throttleHorizontal = horizontalInput;
-        debug_turn = rotationalInput;
         if (DriveType == "Swerve") 
         {
+            robotYAngle = GetRobotAngle();
+            float verticalInput = SwerveControls.FindAction("VerticalAxis").ReadValue<float>();
+            float horizontalInput = SwerveControls.FindAction("HorizontalAxis").ReadValue<float>();
+            float rotationalInput = SwerveControls.FindAction("RotationalAxis").ReadValue<float>();
+
+            debug_throttleVertical = verticalInput;
+            debug_throttleHorizontal = horizontalInput;
+            debug_turn = rotationalInput;
             ModuleState[] moduleStates = Swerve.UpdateSwerveFromInputs(verticalInput, horizontalInput, rotationalInput, GetRobotAngle() * Mathf.Deg2Rad, isRobotCentric);
             for (int i = 0; i < 4; i++) {
                 Wheels[i].Set(i, moduleStates[i], motorTorque, brakeTorque, maxMotorRPM);
@@ -177,10 +177,14 @@ public class DrivetrainController : MonoBehaviour {
         }
         else if (DriveType == "Tank")
         {
-            // ModuleState[] moduleStates = Tank.UpdateTankFromInputs();
-            // for (int i = 0; i < 4; i++) {
-            //     Wheels[i].Set(i, moduleStates[i], motorTorque, brakeTorque, maxMotorRPM);
-            // }
+            float leftInput = TankControls.FindAction("LeftAxis").ReadValue<float>();
+            float rightInput = TankControls.FindAction("RightAxis").ReadValue<float>();
+            debug_throttleVertical = leftInput;
+            debug_throttleHorizontal = rightInput;
+            ModuleState[] moduleStates = Tank.UpdateTankFromInputs(leftInput, rightInput);
+            for (int i = 0; i < 4; i++) {
+                Wheels[i].Set(i, moduleStates[i], motorTorque, brakeTorque, maxMotorRPM);
+            }
         }
     }
 }
