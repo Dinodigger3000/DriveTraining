@@ -68,16 +68,11 @@ public class DrivetrainController : MonoBehaviour {
                 debug[6] = ("ForwardSlip  " + hit.forwardSlip.ToString());
                 debug[7] = ("SidewaysSlip " + hit.sidewaysSlip.ToString());
             }
-
-        
-            // print(index + "," + outputMotorTorque + "," + outputAngle + "," + Mathf.Abs(collider.rpm)/maxMotorRPM + "," + ((state.speed * maxMotorRPM)-collider.rpm));
         }
 
         public void Setup() => m_SteerlessLocalRotation = wheelTransform.localRotation;
     }
     
-    public String DriveType;
-    public bool isRobotCentric;
     public SwerveModule Swerve;
     public TankModule Tank;
     public Wheel FL;
@@ -94,29 +89,39 @@ public class DrivetrainController : MonoBehaviour {
     public float debug_throttleHorizontal;
     public float debug_turn;
 
-    private InputActionMap SwerveControls;
-    private InputActionMap TankControls;
-    private float gyroOffset;
+    private InputActionMap Controls;
+    private InputAction RobotCentricButton;
+    private InputAction PointDirectionButton;
+    private InputAction RespawnRobotbutton;
+
+    public String DriveType;
+    public bool isRobotCentric;
+    public bool RobotCentricButtonEnabled = true;
+    public bool PointDirectionButtonEnabled = true;
+    public bool ResetPositionButtonEnabled = true;
+    public float gyroOffset;
     public float robotYAngle;
 
     public PlayerDetails playerDetails;
-    
-
-    // public Wheel[] test = new Wheel[4]; new way of instantiating arrays
-    
+   
     Wheel[] Wheels = {new Wheel(), new Wheel(), new Wheel(), new Wheel()};
 
 
     void Awake() {
-        // InputSystem.settings.SetInternalFeatureFlag("DISABLE_SHORTCUT_SUPPORT", true);
+        Controls = GetComponent<PlayerInput>().actions.FindActionMap("Drivetrain");
+        RobotCentricButton = Controls.FindAction("RobotCentricButton", true);
+        PointDirectionButton = Controls.FindAction("PointDirectionButton", true);
+        RespawnRobotbutton = Controls.FindAction("ResetPositionButton", true);
+
+        RobotCentricButton.performed += ctx => ToggleRobotCentric();
+        RobotCentricButton.canceled += ctx => ToggleRobotCentric();
+        RespawnRobotbutton.performed += ctx => Respawn();
 
         Wheels[0] = FL;
         Wheels[1] = FR;
         Wheels[2] = BL;
         Wheels[3] = BR;
 
-        SwerveControls = GetComponent<PlayerInput>().actions.FindActionMap("Swerve");
-        TankControls = GetComponent<PlayerInput>().actions.FindActionMap("Tank");
         if (Swerve == null) {
             Swerve = new SwerveModule();
         }
@@ -124,6 +129,7 @@ public class DrivetrainController : MonoBehaviour {
             Tank = new TankModule();
         }
         playerDetails = GetComponent<PlayerDetails>();
+        Controls.Enable();
     }
     void Start() {
         FL.Setup();
@@ -137,6 +143,7 @@ public class DrivetrainController : MonoBehaviour {
             transform.position = playerDetails.spawn.position;
             transform.rotation = playerDetails.spawn.rotation;
             gyroOffset = playerDetails.spawn.eulerAngles.y;
+            Debug.Log(playerDetails.profileName +" Spawned");
         }
         else
         {
@@ -146,17 +153,28 @@ public class DrivetrainController : MonoBehaviour {
             Wheels[i].collider.sprungMass = (body.mass / 4);
         }
     }
-
     public void OnEnable()
     {
-        SwerveControls.Enable();
-        TankControls.Enable();
+        Controls.Enable();
     }
 
     public void OnDisable()
     {
-        SwerveControls.Disable();
-        TankControls.Disable();
+        Controls.Disable();
+    }
+    public void ToggleRobotCentric() {
+        if (RobotCentricButtonEnabled) {
+            isRobotCentric = !isRobotCentric;
+            Debug.Log(playerDetails.profileName +" RobotCentric "+ isRobotCentric.ToString());
+        }
+    }
+    public void Respawn() {
+        if (ResetPositionButtonEnabled) {
+            transform.position = playerDetails.spawn.position;
+            transform.rotation = playerDetails.spawn.rotation;
+            gyroOffset = playerDetails.spawn.eulerAngles.y;
+            Debug.Log(playerDetails.profileName +" Respawned");
+        }
     }
     public float GetRobotAngle() {
         float rot = transform.eulerAngles.y + gyroOffset;
@@ -168,12 +186,13 @@ public class DrivetrainController : MonoBehaviour {
     }
 
     void FixedUpdate() {
+
         if (DriveType == "Swerve") 
         {
             robotYAngle = GetRobotAngle();
-            float verticalInput = SwerveControls.FindAction("VerticalAxis").ReadValue<float>();
-            float horizontalInput = SwerveControls.FindAction("HorizontalAxis").ReadValue<float>();
-            float rotationalInput = SwerveControls.FindAction("RotationalAxis").ReadValue<float>();
+            float verticalInput = Controls.FindAction("LeftY").ReadValue<float>();
+            float horizontalInput = Controls.FindAction("LeftX").ReadValue<float>();
+            float rotationalInput = Controls.FindAction("RightX").ReadValue<float>();
 
             debug_throttleVertical = verticalInput;
             debug_throttleHorizontal = horizontalInput;
@@ -185,8 +204,8 @@ public class DrivetrainController : MonoBehaviour {
         }
         else if (DriveType == "Tank")
         {
-            float leftInput = TankControls.FindAction("LeftAxis").ReadValue<float>();
-            float rightInput = TankControls.FindAction("RightAxis").ReadValue<float>();
+            float leftInput = Controls.FindAction("LeftY").ReadValue<float>();
+            float rightInput = Controls.FindAction("RightY").ReadValue<float>();
             debug_throttleVertical = leftInput;
             debug_throttleHorizontal = rightInput;
             ModuleState[] moduleStates = Tank.UpdateTankFromInputs(leftInput, rightInput);

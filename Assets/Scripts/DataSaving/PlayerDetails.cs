@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerDetails : MonoBehaviour
 {
     public int playerID;
+    public string profileName;
     public Transform spawn;
-    void Start() {
-        transform.SetPositionAndRotation(spawn.position, spawn.rotation);
-    }
 }

@@ -107,7 +107,7 @@ public class PlaySoloMenu : MonoBehaviour
         allianceStation = newStation;
     }
     public void SetPlayerProfile(Transform button) {
-        string profileName = button.name;
+        profileName = button.name;
         if (allianceColor == "Red") {
             RedProfileSelectMenu.SetPlayerProfile(profileName);
         } else if (allianceColor == "Blue") {
@@ -127,6 +127,7 @@ public class PlaySoloMenu : MonoBehaviour
             GameDataManager.Instance.gameType = "Solo";
             menuScreen.PlayGame();
         }
+        SetData();
     }
     public void Back() {
         if (subMenu == "ProfileSelect") {
@@ -134,6 +135,7 @@ public class PlaySoloMenu : MonoBehaviour
         } else if (subMenu == "GameSetup") {
             OpenProfileSelect();
         }
+        SetData();
     }
     void Start() {
         OpenProfileSelect();

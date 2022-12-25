@@ -26,6 +26,7 @@ public class SingleplayerManager : MonoBehaviour
         inputManager = player.GetComponent("PlayerInput") as PlayerInput;
         player.GetComponent<PlayerDetails>().spawn = station.spawn;
         player.GetComponent<PlayerDetails>().playerID = inputManager.playerIndex;
+        player.GetComponent<PlayerDetails>().profileName = GameDataManager.Instance.Player1ProfileName;
         inputManager.camera = station.GetCamera();
         Debug.Log(allianceColor+", "+allianceStation+", "+inputManager.playerIndex);
     }

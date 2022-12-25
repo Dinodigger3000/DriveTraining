@@ -584,10 +584,78 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2023d868-9c4d-4c81-b6af-e8623e610031
+    m_ActionName: Drivetrain/LeftX[/XInputControllerWindows/leftStick/x,/Keyboard/d,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f92bcddb-c7ae-4f16-b02c-4b16fee1d980
+    m_ActionName: Drivetrain/LeftY[/XInputControllerWindows/leftStick/y,/Keyboard/w,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b9a1f819-ed72-4638-bd86-444f7f2c02c5
+    m_ActionName: Drivetrain/RightX[/XInputControllerWindows/rightStick/x,/Keyboard/rightArrow,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bfc486dc-53eb-413c-9c81-76b4732c2f00
+    m_ActionName: Drivetrain/RightY[/XInputControllerWindows/rightStick/y,/Keyboard/upArrow,/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a4ce049d-12ae-4247-afbe-e561bafec683
+    m_ActionName: Drivetrain/ResetPositionButton[/XInputControllerWindows/start,/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 750d79df-f97a-4ec4-a3a2-15797b59be3f
+    m_ActionName: Drivetrain/RobotCentricButton[/XInputControllerWindows/leftShoulder,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 30243603-6242-4ebc-8503-35e638f060a3
+    m_ActionName: Drivetrain/PointDirectionButton[/XInputControllerWindows/rightShoulder,/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3a7b9645-dfea-48dc-b87f-74787b2d24dd
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d87ee235-6354-4163-b420-f7060cd14069
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 168bbb81-c178-4f82-b976-c46bdaf48f48
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 329f4022-242f-4ecb-863b-51d5338d4d29
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fcaefe12-bff5-4ad8-a4f9-3369a49a1085
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9dc673d9-42c5-4a13-8907-4840d103fa64
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b076e295-f434-4f7e-a430-9b9591bffd7f
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9529c6a4-cbb4-49d0-a927-309d4980c51f
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0458ef89-52a2-49ec-a284-038ca4a0bb21
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 54bcdd04-43fd-4afb-8e40-94f6a03d52b3
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Swerve
+  m_DefaultActionMap: Drivetrain
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &3600026901864692780
@@ -659,6 +727,34 @@ MonoBehaviour:
   debug_throttleVertical: 0
   debug_throttleHorizontal: 0
   debug_turn: 0
+  RobotCentricButton:
+    m_Name: Robot Centric Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ea8b8af1-5553-4ed0-b99e-c10291b23535
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  PointDirectionButton:
+    m_Name: Point Direction Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 534ae9be-b7e2-48df-97b2-c56148400d74
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  RespawnRobotbutton:
+    m_Name: Respawn Robotbutton
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9c2aef32-305d-4d5f-86e9-b5921f9b8636
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  gyroOffset: 0
   robotYAngle: 0
   playerDetails: {fileID: 0}
 --- !u!114 &7148112673436594853
@@ -674,6 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
+  profileName: 
   spawn: {fileID: 0}
 --- !u!1 &4306325240589289096
 GameObject:

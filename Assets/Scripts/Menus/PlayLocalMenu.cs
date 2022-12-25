@@ -173,25 +173,6 @@ public class PlayLocalMenu : MonoBehaviour
             ds4.SetLightBarColor(Color.blue);
         }
     }
-    // public void InitProfiles(Transform UI) {
-    //     List<string> profileNames = SaveManager.GetProfiles();
-    //     Transform profileList = UI.Find("ProfileSelectMenu/ProfileSelectWindow/Viewport/Content");
-    //     GameObject templateProfile = profileList.Find("TemplateProfile").gameObject;
-    //     foreach (string profileName in profileNames) {
-    //         Transform profileObj;
-    //         GameObject newProfileObj;
-    //         profileObj = profileList.Find(profileName);
-    //         if (profileObj) {
-    //             newProfileObj = profileObj.gameObject;
-    //         } else {
-    //             newProfileObj = Instantiate(templateProfile, profileList);
-    //             newProfileObj.name = profileName;
-    //             newProfileObj.transform.Find("ProfileName").gameObject.GetComponent<TMP_Text>().text = (profileName);
-    //         }
-    //         newProfileObj.transform.SetAsFirstSibling();
-    //         newProfileObj.SetActive(true);
-    //     }
-    // }
 
     public void SetPlayerProfile(Transform button) {
         string profileName = button.name;
@@ -206,25 +187,7 @@ public class PlayLocalMenu : MonoBehaviour
             }
         }
     }
-    // public void CreateNewProfile(Transform list) {
-    //     list.Find("NameNewProfile").gameObject.SetActive(true);
-    //     list.Find("CreateNewProfileButton").gameObject.SetActive(false);
-    //     list.Find("NameNewProfile").gameObject.GetComponent<TMP_InputField>().Select();
-    //     list.Find("NameNewProfile").SetAsFirstSibling();
-    // // }
-    // public void NameNewProfile(Transform list) {
-    //     List<string> profileNames = SaveManager.GetProfiles();
-    //     string newName = list.Find("NameNewProfile").gameObject.GetComponent<TMP_InputField>().text;
-    //     list.Find("NameNewProfile").gameObject.SetActive(false);
-    //     list.Find("CreateNewProfileButton").gameObject.SetActive(true);
-    //     list.Find("CreateNewProfileButton").gameObject.GetComponent<Button>().Select();
-    //     list.Find("NameNewProfile").gameObject.GetComponent<TMP_InputField>().text = "";
-    //     if (!profileNames.Contains(newName)) {
-    //         SaveManager.NewProfile(newName);
-    //     }
-    //     InitProfiles(player1UI);
-    //     InitProfiles(player2UI);
-    // }
+
     private void SetData() {
         GameDataManager.Instance.player1ControllerId = p1DeviceID;
         GameDataManager.Instance.player1Controller = p1Device;
