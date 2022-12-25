@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "2b16645f-6ee6-4dea-b0d3-85c924ce18fa",
                     "expectedControlType": "Axis",
-                    "processors": "AxisDeadzone",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "bc609164-2065-4e01-a885-9549d7009287",
                     "expectedControlType": "Axis",
-                    "processors": "AxisDeadzone",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -28,15 +28,6 @@
                     "type": "Value",
                     "id": "7ccd6a6f-dccd-47ef-a3f2-fa71269d6e50",
                     "expectedControlType": "Axis",
-                    "processors": "AxisDeadzone",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "PointDirection",
-                    "type": "Value",
-                    "id": "f46651cf-8178-40eb-905a-5208d74e23c3",
-                    "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -269,116 +260,6 @@
                     "action": "RobotCentric",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "Right Stick",
-                    "id": "8cb09997-b726-4ace-9072-697c7b58e0d5",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "StickDeadzone",
-                    "groups": "",
-                    "action": "PointDirection",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Up",
-                    "id": "889eb311-4341-4e81-b438-9b42b3266cce",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PointDirection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Down",
-                    "id": "395ffd17-9679-4320-b033-a960cc368d73",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PointDirection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Left",
-                    "id": "f8c7b1f1-e020-46d4-8f0e-ce1745c7a09d",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PointDirection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "5ffe1455-e628-41b3-abfc-5091a0afc5b0",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PointDirection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Arrow Keys",
-                    "id": "8f5b0fd7-db0b-4d0c-919b-4999d35a1f3e",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PointDirection",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "c247af74-efa2-4c6a-bbba-396a93920c95",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "PointDirection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "ddb09712-b051-45a9-a756-39837783daef",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "PointDirection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "7b3069e3-5ad9-4f02-baa0-0b304f77501d",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "PointDirection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "a497173e-e356-4751-8a1f-07f900c58e78",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "PointDirection",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         },
@@ -391,7 +272,7 @@
                     "type": "Value",
                     "id": "bee9845a-02c7-4734-88be-e75bdf7bc081",
                     "expectedControlType": "Axis",
-                    "processors": "AxisDeadzone",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -400,7 +281,7 @@
                     "type": "Value",
                     "id": "e35c78f6-e47b-4dd9-b978-6f534a79c8d5",
                     "expectedControlType": "Axis",
-                    "processors": "AxisDeadzone",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },

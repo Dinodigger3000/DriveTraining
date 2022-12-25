@@ -4,6 +4,7 @@ using System.Collections;
 using MathNet.Numerics.LinearAlgebra;
 using UnityEngine.InputSystem;
 
+
   
 public class DrivetrainController : MonoBehaviour {
 
@@ -107,6 +108,8 @@ public class DrivetrainController : MonoBehaviour {
 
 
     void Awake() {
+        // InputSystem.settings.SetInternalFeatureFlag("DISABLE_SHORTCUT_SUPPORT", true);
+
         Wheels[0] = FL;
         Wheels[1] = FR;
         Wheels[2] = BL;
