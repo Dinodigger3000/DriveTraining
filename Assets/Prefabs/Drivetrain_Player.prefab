@@ -26,7 +26,6 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1856374070979460299}
   - {fileID: 1180322511658454902}
@@ -62,7 +61,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1022849107760175041}
   m_RootOrder: 0
@@ -86,15 +84,15 @@ WheelCollider:
   m_WheelDampingRate: 0.0001
   m_ForwardFriction:
     m_ExtremumSlip: 0.001
-    m_ExtremumValue: 1
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1
-    m_AsymptoteValue: 1
-    m_Stiffness: 2
+    m_AsymptoteValue: 2.5
+    m_Stiffness: 3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.001
-    m_ExtremumValue: 1
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1
-    m_AsymptoteValue: 1
+    m_AsymptoteValue: 2.5
     m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &1668209943865176059
@@ -124,7 +122,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2363187002786204880}
   m_RootOrder: 1
@@ -136,7 +133,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668209943865176059}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0feecea57abcdbd4982a7f1b5925b65f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -171,7 +168,6 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.287947, y: 0.0508, z: -0.287947}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 280532191174503375}
   m_RootOrder: 1
@@ -253,7 +249,6 @@ Transform:
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4618664685833724829}
   - {fileID: 5447776758039681209}
@@ -290,7 +285,6 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.287947, y: 0.0508, z: 0.287947}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 280532191174503375}
   m_RootOrder: 2
@@ -374,7 +368,6 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.287947, y: 0.0508, z: -0.287947}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 280532191174503375}
   m_RootOrder: 0
@@ -458,7 +451,6 @@ Transform:
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6549676141221502604}
   m_Father: {fileID: 2363187002786204880}
@@ -544,7 +536,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7276497144076553991}
   - {fileID: 1336577607174727421}
@@ -612,10 +603,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DriveType: Swerve
+  isRobotCentric: 0
   FL:
     wheelTransform: {fileID: 4810230108672760708}
     collider: {fileID: 1464203891694147267}
     debug:
+    - 
+    - 
+    - 
     - 
     - 
     - 
@@ -630,10 +625,16 @@ MonoBehaviour:
     - 
     - 
     - 
+    - 
+    - 
+    - 
   BL:
     wheelTransform: {fileID: 4618664685833724829}
     collider: {fileID: 3289313639758157108}
     debug:
+    - 
+    - 
+    - 
     - 
     - 
     - 
@@ -648,9 +649,12 @@ MonoBehaviour:
     - 
     - 
     - 
+    - 
+    - 
+    - 
   body: {fileID: 1391841737066501188}
-  motorTorque: 50
-  brakeTorque: 100
+  motorTorque: 150
+  brakeTorque: 250
   maxMotorRPM: 1000
   debug_throttleVertical: 0
   debug_throttleHorizontal: 0
@@ -698,7 +702,6 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1022849107760175041}
   m_RootOrder: 1
@@ -722,15 +725,15 @@ WheelCollider:
   m_WheelDampingRate: 0.0001
   m_ForwardFriction:
     m_ExtremumSlip: 0.001
-    m_ExtremumValue: 1
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1
-    m_AsymptoteValue: 1
-    m_Stiffness: 2
+    m_AsymptoteValue: 2.5
+    m_Stiffness: 3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.001
-    m_ExtremumValue: 1
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1
-    m_AsymptoteValue: 1
+    m_AsymptoteValue: 2.5
     m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &4966503231770168104
@@ -760,7 +763,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1022849107760175041}
   m_RootOrder: 2
@@ -784,15 +786,15 @@ WheelCollider:
   m_WheelDampingRate: 0.0001
   m_ForwardFriction:
     m_ExtremumSlip: 0.001
-    m_ExtremumValue: 1
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1
-    m_AsymptoteValue: 1
-    m_Stiffness: 2
+    m_AsymptoteValue: 2.5
+    m_Stiffness: 3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.001
-    m_ExtremumValue: 1
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1
-    m_AsymptoteValue: 1
+    m_AsymptoteValue: 2.5
     m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &5492760974760369267
@@ -823,7 +825,6 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.287947, y: 0.0508, z: 0.287947}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 280532191174503375}
   m_RootOrder: 3
@@ -906,7 +907,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1022849107760175041}
   m_RootOrder: 3
@@ -930,15 +930,15 @@ WheelCollider:
   m_WheelDampingRate: 0.0001
   m_ForwardFriction:
     m_ExtremumSlip: 0.001
-    m_ExtremumValue: 1
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1
-    m_AsymptoteValue: 1
-    m_Stiffness: 2
+    m_AsymptoteValue: 2.5
+    m_Stiffness: 3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.001
-    m_ExtremumValue: 1
+    m_ExtremumValue: 2
     m_AsymptoteSlip: 1
-    m_AsymptoteValue: 1
+    m_AsymptoteValue: 2.5
     m_Stiffness: 2
   m_Enabled: 1
 --- !u!1001 &6732783323617605991

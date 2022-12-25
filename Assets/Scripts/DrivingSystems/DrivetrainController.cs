@@ -12,10 +12,10 @@ public class DrivetrainController : MonoBehaviour {
         public Transform wheelTransform;
         [Tooltip("A reference to the WheelCollider of the wheel.")]
         public WheelCollider collider;
-        
+        public WheelHit hit;
         Quaternion m_SteerlessLocalRotation;
 
-        public string[] debug = new string[5];
+        public string[] debug = new string[8];
 
 
         public void ApplyPositionToVisuals() {
@@ -39,29 +39,34 @@ public class DrivetrainController : MonoBehaviour {
             if (Mathf.Abs(state.speed) >= 0.01f) { //Robot is not stopped
                 if ((targetRPM < 0 && currentRPM > 0) || (targetRPM > 0 && currentRPM < 0)) {//Robot is moving the wrong way, use brakes
                     outputMotorTorque = state.speed * motorTorque;
-                    outputBrakeTorque = brakeTorque;
-                // } else if (Mathf.Abs(currentRPM) > Mathf.Abs(targetRPM)) {//the wheel is spinning too fast, slow down 
-                //     Debug.Log("slowing down wheel");
-                //     outputMotorTorque = 0;
-                //     outputBrakeTorque = Mathf.Abs(currentRPM) - Mathf.Abs(targetRPM);
+                    outputBrakeTorque = Mathf.Abs(currentRPM) * brakeTorque;
+                } else if (currentRPM > targetRPM && targetRPM > 0 || currentRPM < targetRPM && targetRPM < 0) {//the wheel is spinning too fast, activate the brakes
+                    outputMotorTorque = state.speed * motorTorque;
+                    outputBrakeTorque = (Mathf.Abs(targetRPM) / Mathf.Abs(currentRPM)) * brakeTorque;
                 } else {//wheel is not fast enough, speed up
                     outputMotorTorque = state.speed * motorTorque;
                     outputBrakeTorque = 0;
                 }
             } else { //robot is stopped
                 outputMotorTorque = 0;
-                outputBrakeTorque = brakeTorque;
+                outputBrakeTorque =  brakeTorque + Mathf.Abs(currentRPM) * brakeTorque;
             }
 
             collider.brakeTorque = outputBrakeTorque;
             collider.motorTorque = outputMotorTorque;
             collider.steerAngle = outputAngle;
             ApplyPositionToVisuals();
+            collider.GetGroundHit(out hit);
             debug[0] = ("OutputTorque " + outputMotorTorque.ToString());
             debug[1] = ("OutputBrake  " + outputBrakeTorque.ToString());
             debug[2] = ("OutputAngle  " + outputAngle.ToString());
             debug[3] = ("TargetRPM    " + targetRPM.ToString());
             debug[4] = ("RPM          " + currentRPM.ToString());
+            if (collider.isGrounded){
+                debug[5] = ("Force        " + hit.force.ToString());
+                debug[6] = ("ForwardSlip  " + hit.forwardSlip.ToString());
+                debug[7] = ("SidewaysSlip " + hit.sidewaysSlip.ToString());
+            }
 
         
             // print(index + "," + outputMotorTorque + "," + outputAngle + "," + Mathf.Abs(collider.rpm)/maxMotorRPM + "," + ((state.speed * maxMotorRPM)-collider.rpm));
