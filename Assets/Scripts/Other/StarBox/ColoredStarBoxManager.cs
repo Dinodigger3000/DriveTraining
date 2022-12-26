@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ColoredStarBoxManager : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class ColoredStarBoxManager : MonoBehaviour
     public Text timerText;
     public Text scoreText;
 
+    public GameObject endMenu;
+    public TextMeshProUGUI endTimeText;
+
    
 
 
@@ -33,6 +37,7 @@ public class ColoredStarBoxManager : MonoBehaviour
         //bottomRight = gameObject.transform.Find("StarBoxManager/BottomRight");
         startStarBox();
         timerOn = true;
+        endMenu.SetActive(false);
 
     }
 
@@ -98,6 +103,9 @@ public class ColoredStarBoxManager : MonoBehaviour
         timerOn = false;
         print("yay");
         PlayerPrefs.SetFloat("playerScore", timer);
+
+        endMenu.SetActive(true);
+        endTimeText.text = timer.ToString();
     }
 
 }

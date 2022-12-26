@@ -59,11 +59,19 @@ public class LeaderBoard : MonoBehaviour
         StartCoroutine(fetchTopHighScoreRoutine());
     }
 
+    public void fetch()
+    {
+        StartCoroutine(fetchTopHighScoreRoutine());
+    }
 
 
     public IEnumerator fetchTopHighScoreRoutine()
     {
         bool done = false;
+        playerNames.text = "";
+        playerScores.text = "";
+        playerRank.text = "";
+         
         LootLockerSDKManager.GetScoreList(leaderboardID, 10, 0, (response) =>
         {
 
@@ -91,7 +99,7 @@ public class LeaderBoard : MonoBehaviour
                 }
                 done = true;
                 playerNames.text = tempPlayerNames;
-                playerScores.text = tempPlayerScores; //(tempPlayerScores.ToIntArray()[1] / 100).ToString();
+                playerScores.text = tempPlayerScores; 
                 playerRank.text = tempPlayerRank;
                 playerTimeText.text = PlayerPrefs.GetFloat("playerScore").ToString();
             }
@@ -117,7 +125,7 @@ public class LeaderBoard : MonoBehaviour
                 {
                     yourRank.SetActive(true);
                     yourRankText.text = response.rank.ToString();
-                    yourScoreText.text = response.score.ToString();
+                    yourScoreText.text = (response.score/100f).ToString();
 
                     print("rank is: " + response.rank);
                 }

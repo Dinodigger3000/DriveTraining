@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewField.unity
     guid: f46ed0bf6f60e394ca536cf977a75c2b
+  - enabled: 1
+    path: Assets/Scenes/ColoredStar.unity
+    guid: 56a23a6843f8eb14683b836887db3437
+  - enabled: 1
+    path: Assets/Scenes/OnlineLeaderBoard.unity
+    guid: f44ec712ad8bee04a87d7ed414af4799
   - enabled: 0
     path: Assets/Scenes/TestField.unity
     guid: a21bc2dc9430b294cbb88f4a5059fdfe

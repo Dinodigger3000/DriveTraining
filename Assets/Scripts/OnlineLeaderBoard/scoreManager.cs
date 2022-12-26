@@ -17,7 +17,7 @@ public class scoreManager : MonoBehaviour
 
     public void refresh()
     {
-        leaderboard.fetchTopHighScoreRoutine();
+        StartCoroutine(SetupRoutine());
     }
 
     IEnumerator SetupRoutine()
