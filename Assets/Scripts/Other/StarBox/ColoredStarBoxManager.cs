@@ -23,6 +23,8 @@ public class ColoredStarBoxManager : MonoBehaviour
     public Text timerText;
     public Text scoreText;
 
+   
+
 
 
     void Start()
@@ -81,8 +83,7 @@ public class ColoredStarBoxManager : MonoBehaviour
 
         if (starsTillEnd <= stars)
         {
-            timerOn = false;
-            print("yay");
+            Finished();
         }
         else
         {
@@ -92,9 +93,11 @@ public class ColoredStarBoxManager : MonoBehaviour
 
     }
 
-    private void endCollection()
+    private void Finished()
     {
-        print("collected");
+        timerOn = false;
+        print("yay");
+        PlayerPrefs.SetFloat("playerScore", timer);
     }
 
 }
